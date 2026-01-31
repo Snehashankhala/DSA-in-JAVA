@@ -1,0 +1,23 @@
+class Solution {
+    public boolean wordPattern(String pattern, String s) { ## use bollean for getting nas in true nad false
+        String[] arr= s.split(" ");              ## this is for array to split so so patern is got split nhi toh dog ko "d"  "o"  "g" lega so for this "dog"
+        if(pattern.length()!=arr.length){        ## after splitting checlking if "dog cat" string equal to "ab" arr length
+        return false;
+    }
+     Map<Character,String> map=new HashMap<>();       # two thing so Character and string and ke use key as map here so yaa rkhna 
+    for(int i=0; i<pattern.length(); i++){
+    char ch= pattern.charAt(i);
+    boolean containsKey = map.containsKey(ch);
+    if(map.containsValue(arr[i]) && !containsKey){
+        return false;
+    }
+    if(containsKey && !map.get(ch).equals(arr[i])){
+        return false;
+    }else{
+        map.put(ch,arr[i]);
+    }
+    }
+    return true;
+
+    }   
+    }     
