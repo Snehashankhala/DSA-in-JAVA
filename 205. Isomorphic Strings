@@ -1,0 +1,61 @@
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+    if(s.length()!=t.length()){
+        return false;
+    }
+    HashMap<Character, Character> hm=new HashMap<>();       ## why hashmap beause we compre two things otherwise use set
+    for(int i=0; i<s.length(); i++){                        # go throught loop check
+        if(hm.containsKey(s.charAt(i))){                   # if they charcater contain the valsue at i asa nd key
+            if(hm.get(s.charAt(i)) !=(t.charAt(i))){       # get that key then check if get value is same or or with s.length() to t.length()
+                return false;                              
+            } 
+
+         } else {
+            if(hm.containsValue(t.charAt(i))){             # here we check importand part that consist the rest of the smae and coantaind value of a which has dublicatel like conatain value blocked that
+                return false;                              ##     a → x
+                                                               ✔️ b → y
+
+                                                                   ❌ a → x
+                                                                   ❌ b → x ← this is what containsValue blocks
+        }
+            hm.put(s.charAt(i),t.charAt(i));                ## if we dont do that we dont have any record of the strinng that have this constist here 
+                                                                                              Checking does NOT store information.
+                                                                                           👉 Future comparisons need past information.
+        }
+    }
+        return true;
+    
+    }
+}      
+
+
+
+### test case 
+
+Input: s = "egg", t = "add"
+
+Output: true
+
+Explanation:
+
+The strings s and t can be made identical by:
+
+Mapping 'e' to 'a'.
+Mapping 'g' to 'd'.
+Example 2:
+
+Input: s = "f11", t = "b23"
+
+Output: false
+
+Explanation:
+
+The strings s and t can not be made identical as '1' needs to be mapped to both '2' and '3'.
+
+Example 3:
+
+Input: s = "paper", t = "title"
+
+Output: true
+
+ 
