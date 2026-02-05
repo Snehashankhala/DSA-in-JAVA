@@ -1,0 +1,29 @@
+  228. Summary Ranges
+class Solution {
+    public List<String> summaryRanges(int[] nums) {      ## so here is we are going to put that in the list of the hashmapfor string add in this 
+        List<String> result= new ArrayList<>();
+        for(int i=0; i<nums.length; i++){
+            int start = nums[i];                                           ## in this the first start from the start of the nums i
+            while(i+1<nums.length && nums[i+1]==nums[i]+1){          ## int this we check the i+1 jo hain voh nums .length se choti hone cheche and && the nums I+1 are need to be equal to the next elemeng of nums [i]+1
+                i++;
+            }
+            if(start==nums[i]){                                      ##onlt check for one elemnt here for the if case here and teh numsstart here fir that
+                result.add(String.valueOf(start));            ## tehn we add teh resylt string here and the value of string lekhna jrruir hn for the start value;;
+            }else{ 
+                result.add(start+"->"+nums[i]);               ## and for else value i need to addthe thing wehich given in the test case for that -> and then the nums i
+            }
+        }
+        return result;
+    }
+} 
+
+
+##test case 
+Example 1:
+
+Input: nums = [0,1,2,4,5,7]
+Output: ["0->2","4->5","7"]
+Explanation: The ranges are:
+[0,2] --> "0->2"
+[4,5] --> "4->5"
+[7,7] --> "7"
