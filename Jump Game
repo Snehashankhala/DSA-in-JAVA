@@ -1,0 +1,18 @@
+class Solution {
+    public boolean canJump(int[] nums) {
+        int current =0;
+        for(int i=0; i<nums.length; i++){
+            if(i>current){
+            return false;
+        }
+     current=Math.max(current,i+nums[i]);  ##for that checking the current elemnt the index number for 0 strat
+        }
+        return true;         ## only checking can we reach the last index
+    }
+}
+## [2,3,1,1,4]
+Output
+true
+ ## [3,2,1,0,4]
+Output
+false
